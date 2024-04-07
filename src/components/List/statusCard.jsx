@@ -45,7 +45,7 @@ const StatusBasedBooks = () => {
   };
 
   const handleGoBack = () => {
-    navigate("/dashboard");
+    navigate("/");
   };
 
   return (
@@ -64,6 +64,7 @@ const StatusBasedBooks = () => {
               <div key={book._id} className="bg-gray-200 p-4 mb-2">
                 <h3 className="text-lg font-bold">{book.title}</h3>
                 <p>Author: {book.authorName}</p>
+                <p>Publication House: {book.publicationHouse}</p>
                 <div className="w-1/4 lg:w-1/3 px-4 mb-4">
                   <h2 className="text-lg font-bold mb-2">Select Status</h2>
                   <select

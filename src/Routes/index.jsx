@@ -20,7 +20,7 @@ const ComponentRoute = () => {
     ];
     const chatRoutes = [
 
-        { path: "/dashboard", component: Dashboard },
+        { path: "/", component: Dashboard },
         { path: "/status-books", component: StatusBasedBooks }
     ];
     return (

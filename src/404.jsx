@@ -16,7 +16,7 @@ function Page404() {
         {token ?
           <Link
             className="text-blue-700 hover:underline dark:text-blue-300"
-            to="/dashboard"
+            to="/"
           >
             go back
           </Link> : <Link
