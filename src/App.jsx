@@ -14,12 +14,15 @@ const App = () => {
         const fetchToken = async () => {
             if (token) {
                 Api.setClientToken(token);
-            
+            navigate("/");
             } 
+            else{
+              navigate("/login")
+            }
             setLoading(false);
         };
         fetchToken();
-    }, [token, navigate]);
+    }, []);
 
     // Render loading spinner while checking token
     if (loading) {
