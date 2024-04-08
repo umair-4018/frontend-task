@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { actions } from "../../reducers/BookReducer";
 import { toast } from "react-toastify";
 
-const CreateBooks = ({ edit,setIsOpen }) => { // Destructure the edit object here
-  
+const CreateBooks = ({ edit, setIsOpen }) => { // Destructure the edit object here
+
     const {
         register,
         handleSubmit,
@@ -33,11 +33,11 @@ const CreateBooks = ({ edit,setIsOpen }) => { // Destructure the edit object her
     const genreData = useSelector((state) => state.book.genre);
 
     const onSubmit = async (data) => {
-        if(edit){
+        if (edit) {
             try {
-          
-                const response = await actions.updatePrompt(dispatch, edit?._id,data);
-                console.log(response,"response");
+
+                const response = await actions.updatePrompt(dispatch, edit?._id, data);
+                console.log(response, "response");
                 if (response && response.status === 200) {
                     toast.success("Book updated successfully");
                     reset();
@@ -53,28 +53,28 @@ const CreateBooks = ({ edit,setIsOpen }) => { // Destructure the edit object her
                 toast.error("Book creation failed. Please try again.");
             }
         }
-        else{
-        try {
-          
-            const response = await actions.submitPrompt(dispatch, data);
-            if (response && response.status === 201) {
-                toast.success("Book created successfully");
-                reset();
-                actions.fetchBooks(dispatch);
-            } else if (response?.data?.message) {
-                toast.error(response.data.message);
-            } else {
-                toast.error(response.data.message);
+        else {
+            try {
+
+                const response = await actions.submitPrompt(dispatch, data);
+                if (response && response.status === 201) {
+                    toast.success("Book created successfully");
+                    reset();
+                    actions.fetchBooks(dispatch);
+                } else if (response?.data?.message) {
+                    toast.error(response.data.message);
+                } else {
+                    toast.error(response.data.message);
+                }
+            } catch (error) {
+                console.error("Error during book creation:", error);
+                toast.error("Book creation failed. Please try again.");
             }
-        } catch (error) {
-            console.error("Error during book creation:", error);
-            toast.error("Book creation failed. Please try again.");
-        }
-    };
-}
+        };
+    }
 
     return (
-        <div className="">
+        <div>
             <div className="max-w-[1140px] mx-auto">
                 <div className="flex gap-5">
                     <div className="w-full">
@@ -181,16 +181,18 @@ const CreateBooks = ({ edit,setIsOpen }) => { // Destructure the edit object her
                                         </div>
                                     </div>
                                 </div>
-                                <button
-                                    type="submit"
-                                    className="px-[29px] py-[13px] text-sm font-bold text-white border-2 border-[#b0574f] transition-all duration-300 bg-[0px] hover:bg-white hover:text-black hover:bg-[100%] uppercase"
-                                    style={{
-                                        backgroundSize: "560px",
-                                        backgroundImage: "linear-gradient(30deg, #b0574f 50%, transparent 50%)",
-                                    }}
-                                >
-                                    {edit ? "Update Book" : "Create Book"}
-                                </button>
+                                <div className="flex justify-end">
+                                    <button
+                                        type="submit"
+                                        className="rounded-lg px-[29px] py-[13px] text-sm font-bold text-white border-2 border-[#b0574f] transition-all duration-300 bg-[0px] hover:bg-white hover:text-black hover:bg-[100%] uppercase"
+                                        style={{
+                                            backgroundSize: "560px",
+                                            backgroundImage: "linear-gradient(30deg, #b0574f 50%, transparent 50%)",
+                                        }}
+                                    >
+                                        {edit ? "Update Book" : "Create Book"}
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </div>

@@ -1,14 +1,12 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-
 import { ToastContainer } from "react-toastify";
 import { useSelector } from "react-redux";
 import Page404 from "../404";
 import LoginPage from "../components/auth/login";
 import SignupPage from "../components/auth/signup";
-import { Dashboard } from "../components/Dashboard";
-
-import StatusBasedBooks from "../components/List/statusCard";
+import  Dashboard  from "../components/dashboard";
+import BookShelf from "../components/bookShelf";
 
 const ComponentRoute = () => {
     const token = useSelector((state) => state.login.user?.token);
@@ -21,7 +19,7 @@ const ComponentRoute = () => {
     const chatRoutes = [
 
         { path: "/", component: Dashboard },
-        { path: "/status-books", component: StatusBasedBooks }
+        { path: "/bookshelf", component: BookShelf }
     ];
     return (
         <>

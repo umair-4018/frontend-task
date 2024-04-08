@@ -1,8 +1,8 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
-import CreateBooks from '../components/books/createBooks'
+import { Fragment } from 'react'
+import CreateBooks from '../components/bookForm'
 
-export default function MyModal({isOpen,setIsOpen,edit}) {
+export default function MyModal({ isOpen, setIsOpen, edit }) {
 
 
   function closeModal() {
@@ -15,15 +15,7 @@ export default function MyModal({isOpen,setIsOpen,edit}) {
 
   return (
     <>
-      <div className="fixed inset-0 flex items-center justify-center">
-        <button
-          type="button"
-          onClick={openModal}
-          className="rounded-md bg-black/20 px-4 py-2 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
-        >
-          Open dialog
-        </button>
-      </div>
+
 
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -51,13 +43,19 @@ export default function MyModal({isOpen,setIsOpen,edit}) {
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-               
+                  <p
+                    className='float-right rounded-full bg-slate-500 p-1 hover:bg-gray-600 cursor-pointer'
+                    onClick={closeModal}
+                    style={{ width: '30px', height: '30px', lineHeight: '1', textAlign: 'center', color: '#fff' }}
+                  >
+                    X
+                  </p>
                   <div className="mt-2">
-                  <CreateBooks edit={edit}
-                  setIsOpen={setIsOpen}
-                  />
+                    <CreateBooks edit={edit}
+                      setIsOpen={setIsOpen}
+                    />
                   </div>
-
+                  {/* 
                   <div className="mt-4">
                     <button
                       type="button"
@@ -66,7 +64,7 @@ export default function MyModal({isOpen,setIsOpen,edit}) {
                     >
                      Close Modal
                     </button>
-                  </div>
+                  </div> */}
                 </Dialog.Panel>
               </Transition.Child>
             </div>

@@ -65,22 +65,22 @@ export const actions = {
     },
 
       updatePrompt : async (dispatch, id, data) => {
-        dispatch({ type: types.UPDATE_PROMPT_PENDING }); // Dispatch a pending action
+        dispatch({ type: types.UPDATE_PROMPT_PENDING }); 
     
         try {
-            const response = await Api.updateBook(id, data); // Call your API function to update the book
+            const response = await Api.updateBook(id, data); 
     
-            if (response?.status === 200) { // Check if the response status is 200
-                dispatch({ type: types.UPDATE_PROMPT_SUCCESS, data: response.data }); // Dispatch a success action with the data
+            if (response?.status === 200) { 
+                dispatch({ type: types.UPDATE_PROMPT_SUCCESS, data: response.data }); 
             } else {
-                dispatch({ type: types.UPDATE_PROMPT_FAILURE, data: '' }); // Dispatch a failure action with empty data
+                dispatch({ type: types.UPDATE_PROMPT_FAILURE, data: '' }); 
             }
     
-            return response; // Return the response
+            return response; 
         } catch (error) {
             console.error('Error updating book:', error);
-            dispatch({ type: types.UPDATE_PROMPT_FAILURE, data: '' }); // Dispatch a failure action with empty data
-            return undefined; // Return undefined to indicate an error
+            dispatch({ type: types.UPDATE_PROMPT_FAILURE, data: '' }); 
+            return undefined; 
         }
     },
 
