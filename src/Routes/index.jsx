@@ -5,8 +5,8 @@ import { useSelector } from "react-redux";
 import Page404 from "../404";
 import LoginPage from "../components/auth/login";
 import SignupPage from "../components/auth/signup";
-import  Dashboard  from "../components/dashboard";
-import BookShelf from "../components/bookShelf";
+import  Dashboard  from "../components/dashboard/index";
+import BookShelf from "../components/bookShelf/index";
 
 const ComponentRoute = () => {
     const token = useSelector((state) => state.login.user?.token);
