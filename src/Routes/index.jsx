@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import Page404 from "../404";
 import LoginPage from "../components/auth/login";
 import SignupPage from "../components/auth/signup";
-import  Dashboard  from "../components/dashboard/index";
+import  Dashboard  from "../components/dashboard/dashboard";
 import BookShelf from "../components/bookShelf/index";
 
 const ComponentRoute = () => {
