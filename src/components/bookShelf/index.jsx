@@ -13,7 +13,7 @@ const Statuses = [
 const BookShelf = () => {
   const [selectedStatusMap, setSelectedStatusMap] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortOrder, setSortOrder] = useState("asc"); 
+  const [sortOrder, setSortOrder] = useState("asc");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const booksData = useSelector((state) => state.book.books);
@@ -51,8 +51,8 @@ const BookShelf = () => {
   };
   // search books
   const filteredBooks = booksData.filter((book) =>
-  book.title.toLowerCase().includes(searchQuery.toLowerCase())
-);
+    book.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
   // Sort the filteredBooks array based on title and sortOrder
   const sortedBooks = filteredBooks.sort((a, b) => {
     if (sortOrder === "asc") {
@@ -66,34 +66,38 @@ const BookShelf = () => {
       <div className="w-full mb-4">
         <button
           onClick={handleGoBack}
-          className="bg-gray-200 hover:bg-gray-300 text-gray-800  m-3 font-semibold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50"
+          className="bg-gray-200 hover:bg-gray-300 text-gray-800 m-3 font-semibold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50"
         >
-       Go Back
+          Go Back
         </button>
       </div>
-      <div className="w-full mb-4">
-        <input
-          type="text"
-          placeholder="Search books..."
-          className="bg-white border border-gray-300 rounded px-3 py-1 w-3/6"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
+      <div className="container mx-auto">
+      <div className="flex justify-between w-full mb-4">
+        <div className="w-3/6">
+          <input
+            type="text"
+            placeholder="Search books..."
+            className="bg-white border border-gray-300 rounded px-3 py-1 w-full"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
+        <div className="w-3/6 flex items-center justify-end">
+          <label htmlFor="sortOrder" className="mr-2">Sort by Title:</label>
+          <select
+            id="sortOrder"
+            className="bg-white border border-gray-300 rounded px-3 py-1"
+            value={sortOrder}
+            onChange={(e) => setSortOrder(e.target.value)}
+          >
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
+        </div>
       </div>
-      <div className="w-full mb-4">
-        <label htmlFor="sortOrder" className="mr-2">Sort by Title:</label>
-        <select
-          id="sortOrder"
-          className="bg-white border border-gray-300 rounded px-3 py-1"
-          value={sortOrder}
-          onChange={(e) => setSortOrder(e.target.value)}
-        >
-          <option value="asc">Ascending</option>
-          <option value="desc">Descending</option>
-        </select>
       </div>
       {Statuses.map((statusItem) => (
-        <div key={statusItem.status} className="w-full lg:w-1/3 px-4 mb-4">
+        <div key={statusItem.status} className="w-3/4 lg:w-1/3 px-4 mb-4">
           <h2 className="text-lg font-bold mb-2">{statusItem.title}</h2>
           {sortedBooks?.filter((book) => book?.status === statusItem?.status)
             .map((book) => (
@@ -122,8 +126,10 @@ const BookShelf = () => {
             ))}
         </div>
       ))}
+      
     </div>
   );
+  
 };
 
 export default BookShelf;
