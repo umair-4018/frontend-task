@@ -20,7 +20,8 @@ const LoginPage = () => {
               // Set client token first
               Api.setClientToken(result?.data?.token);
               // Then navigate to chatbox
-              window.location="/";
+              // window.location="/";
+              navigate("/")
               // Finally, display success toast
               toast.success("User login successfully");
             } else {
